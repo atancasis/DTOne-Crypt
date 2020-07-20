@@ -44,15 +44,12 @@ sub encrypt_aes256gcm {
 }
 
 sub decrypt_aes256gcm {
-    my ($msg, $master_key) = @_;
+    my ($encrypted, $master_key) = @_;
 
-    $msg = decode_base64($msg);
+    $encrypted = decode_base64($encrypted);
 
-    my $salt       = substr($msg, 0, 16);
-    my $iv         = substr($msg, 16, 12);
-    my $tag        = substr($msg, 28, 16);
-    my $ciphertext = substr($msg, 44);
-    my $key        = scrypt_raw(
+    my ($salt, $iv, $tag, $ciphertext) = unpack('a16 a12 a16 a*', $encrypted);
+    my $key = scrypt_raw(
         $master_key,
         $salt,
         SCRYPT_ITERATIONS,
