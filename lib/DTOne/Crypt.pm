@@ -111,9 +111,29 @@ the salt, initialization vector (IV), ciphertext, and tag.
 Decrypt a composite base64 encoded string containing the salt, IV, ciphertext,
 and tag back to its original plaintext value.
 
+=head1 CAVEATS
+
+=head2 Performance
+
+Random byte generation on Linux might run slow over time unless L<haveged(8)>
+is running. In this scenario, the streaming facility of aes-gcm will be more
+memory efficient.
+
 =head1 AUTHOR
 
 Arnold Tan Casis E<lt>atancasis@cpan.orgE<gt>
+
+=head1 ACKNOWLEDGMENTS
+
+<Pierre Gaulon|https://github.com/pgaulon> and <Jose Nidhin|https://github.com/josnidhin>
+for their valued inputs in interpreting numerous security recommendations and in
+designing the data interchange protocol used in this module.
+
+<Sherwin Daganato|https://metacpan.org/author/SHERWIN> for the note on random
+byte generation and caveats to performance on Linux systems.
+
+<Pierre Vigier|https://metacpan.org/author/PVIGIER> for the note on cross-language
+compatibility with libraries in Go and Java.
 
 =head1 COPYRIGHT
 
