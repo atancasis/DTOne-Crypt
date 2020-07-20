@@ -12,6 +12,7 @@ use Crypt::AuthEnc::GCM qw(gcm_encrypt_authenticate gcm_decrypt_verify);
 use Crypt::ScryptKDF qw(scrypt_raw);
 use Bytes::Random::Secure qw(random_bytes);
 use MIME::Base64;
+use Carp;
 
 use constant SCRYPT_ITERATIONS      => 32768;   # 2**15
 use constant SCRYPT_BLOCK_SIZE      => 8;
@@ -19,7 +20,8 @@ use constant SCRYPT_PARALLELISM     => 1;
 use constant SCRYPT_DERIVED_KEY_LEN => 32;
 
 sub encrypt_aes256gcm {
-    my ($plaintext, $master_key) = @_;
+    my $plaintext  = shift or croak "plaintext data required";
+    my $master_key = shift or croak "master key required";
 
     my $iv   = random_bytes(12);
     my $salt = random_bytes(16);
@@ -44,7 +46,8 @@ sub encrypt_aes256gcm {
 }
 
 sub decrypt_aes256gcm {
-    my ($encrypted, $master_key) = @_;
+    my $encrypted  = shift or croak "encrypted data required";
+    my $master_key = shift or croak "master key required";
 
     $encrypted = decode_base64($encrypted);
 
