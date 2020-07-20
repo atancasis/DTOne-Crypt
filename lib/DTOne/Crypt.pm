@@ -27,6 +27,11 @@ sub encrypt_aes256gcm {
         croak "plaintext data required";
     }
 
+    $master_key = decode_base64($master_key);
+    unless (length($master_key) == 32) {
+        croak "invalid master key length";
+    }
+
     my $iv   = random_bytes(12);
     my $salt = random_bytes(16);
     my $key  = scrypt_raw(
@@ -53,8 +58,12 @@ sub decrypt_aes256gcm {
     my $encrypted  = shift or croak "encrypted data required";
     my $master_key = shift or croak "master key required";
 
-    $encrypted = decode_base64($encrypted);
+    $master_key = decode_base64($master_key);
+    unless (length($master_key) == 32) {
+        croak "invalid master key length";
+    }
 
+    $encrypted = decode_base64($encrypted);
     my ($salt, $iv, $tag, $ciphertext) = unpack('a16 a12 a16 a*', $encrypted);
     my $key = scrypt_raw(
         $master_key,
@@ -116,6 +125,10 @@ Decrypt a composite base64 encoded string containing the salt, IV, ciphertext,
 and tag back to its original plaintext value.
 
 =head1 CAVEATS
+
+=head2 Key Length
+
+Master key is expected to be exactly 256 bits in length, encoded in base64.
 
 =head2 Performance
 

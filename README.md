@@ -35,6 +35,10 @@ and tag back to its original plaintext value.
 
 # CAVEATS
 
+## Key Length
+
+Master key is expected to be exactly 256 bits in length, encoded in base64.
+
 ## Performance
 
 Random byte generation on Linux might run slow over time unless [haveged(8)](https://linux.die.net/man/8/haveged)
