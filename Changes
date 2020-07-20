@@ -1,4 +1,7 @@
 Revision history for DTOne-Crypt
 
-{{$NEXT}}
+0.01
         - Initial release
+
+{{$NEXT}}
+        - Increase scrypt() iteration count to 2**15
