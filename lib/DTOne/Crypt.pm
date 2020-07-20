@@ -20,8 +20,12 @@ use constant SCRYPT_PARALLELISM     => 1;
 use constant SCRYPT_DERIVED_KEY_LEN => 32;
 
 sub encrypt_aes256gcm {
-    my $plaintext  = shift or croak "plaintext data required";
+    my $plaintext  = shift;
     my $master_key = shift or croak "master key required";
+
+    unless (defined $plaintext) {
+        croak "plaintext data required";
+    }
 
     my $iv   = random_bytes(12);
     my $salt = random_bytes(16);
