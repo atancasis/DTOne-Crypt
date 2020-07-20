@@ -2,7 +2,7 @@ package DTOne::Crypt;
 
 use strict;
 use 5.008_005;
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 require Exporter;
 our @ISA = qw(Exporter);
@@ -125,14 +125,14 @@ Arnold Tan Casis E<lt>atancasis@cpan.orgE<gt>
 
 =head1 ACKNOWLEDGMENTS
 
-<Pierre Gaulon|https://github.com/pgaulon> and <Jose Nidhin|https://github.com/josnidhin>
+L<Pierre Gaulon|https://github.com/pgaulon> and L<Jose Nidhin|https://github.com/josnidhin>
 for their valued inputs in interpreting numerous security recommendations and in
 designing the data interchange protocol used in this module.
 
-<Sherwin Daganato|https://metacpan.org/author/SHERWIN> for the note on random
+L<Sherwin Daganato|https://metacpan.org/author/SHERWIN> for the note on random
 byte generation and caveats to performance on Linux systems.
 
-<Pierre Vigier|https://metacpan.org/author/PVIGIER> for the note on cross-language
+L<Pierre Vigier|https://metacpan.org/author/PVIGIER> for the note on cross-language
 compatibility with libraries in Go and Java.
 
 =head1 COPYRIGHT
