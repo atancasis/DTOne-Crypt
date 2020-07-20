@@ -13,7 +13,7 @@ use Crypt::ScryptKDF qw(scrypt_raw);
 use Bytes::Random::Secure qw(random_bytes);
 use MIME::Base64;
 
-use constant SCRYPT_ITERATIONS      => 2**14;
+use constant SCRYPT_ITERATIONS      => 32768;   # 2**15
 use constant SCRYPT_BLOCK_SIZE      => 8;
 use constant SCRYPT_PARALLELISM     => 1;
 use constant SCRYPT_DERIVED_KEY_LEN => 32;
