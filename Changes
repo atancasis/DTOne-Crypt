@@ -9,5 +9,8 @@ Revision history for DTOne-Crypt
 0.03
         - Fix documentation
 
-{{$NEXT}}
+0.04
         - Enforce master key length and format requirements
+
+{{$NEXT}}
+        - Improve test coverage
