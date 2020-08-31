@@ -24,14 +24,14 @@ individually:
     my $encrypted = encrypt_aes256gcm($plaintext, $master_key);
 
 Encrypt plaintext value using AES-256 GCM to a base64 encoded string containing
-the salt, initialization vector (IV), ciphertext, and tag.
+the initialization vector (IV), ciphertext, and tag.
 
 ## decrypt\_aes256gcm
 
     my $decrypted = decrypt_aes256gcm($encrypted, $master_key);
 
-Decrypt a composite base64 encoded string containing the salt, IV, ciphertext,
-and tag back to its original plaintext value.
+Decrypt a composite base64 encoded string containing the IV, ciphertext, and tag
+back to its original plaintext value.
 
 # CAVEATS
 
@@ -41,8 +41,8 @@ Master key is expected to be exactly 256 bits in length, encoded in base64.
 
 ## Performance
 
-Random byte generation on Linux might run slow over time unless [haveged(8)](https://linux.die.net/man/8/haveged)
-is running. In this scenario, the streaming facility of aes-gcm will be more
+Random byte generation on Linux might run slow over time unless [haveged(8)](http://man.he.net/man8/haveged)
+is running. In this scenario, the streaming facility of AES-GCM will be more
 memory efficient.
 
 # AUTHOR

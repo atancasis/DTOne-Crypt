@@ -1,6 +1,8 @@
 Revision history for DTOne-Crypt
 
 {{$NEXT}}
+        - Deprecate Scrypt as KDF in favor of plain AES-256-GCM
+        - Version data protocol format
 
 0.05  2020-07-20 23:53:27 PST
         - Improve test coverage
